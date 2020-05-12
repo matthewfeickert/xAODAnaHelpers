@@ -439,7 +439,8 @@ EL::StatusCode JetCalibrator :: execute ()
 
       // largeR jet truth labelling
       if(m_SmoothedWZTagger_handle.isInitialized()) {
-	m_SmoothedWZTagger_handle->decorateTruthLabel(*jet_itr);
+	// m_SmoothedWZTagger_handle->decorateTruthLabel(*jet_itr);
+	m_SmoothedWZTagger_handle->m_acc_truthLabel(*jet_itr);
       }
     }
 
@@ -645,7 +646,7 @@ EL::StatusCode JetCalibrator::executeSystematic(const CP::SystematicSet& thisSys
   }
   // add ConstDataVector to TStore
   ANA_CHECK( m_store->record( uncertCalibJetsCDV, outContainerName));
-  
+
   return EL::StatusCode::SUCCESS;
 }
 
